@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Fight</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="fight_game.css">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row row1">
+            <div class="col-sm-6 row1_col">
+                <button type="button" class="btn row1_btn" onclick="GenerateP1();">Generate</button>
+            </div>
+            <div class="col-sm-6 row1_col">
+                <button type="button" class="btn row1_btn" onclick="Generate(player2);">Generate</button>
+            </div>
+        </div>
+        <div class="row row2">
+            <div class="col-sm-6 row2_col">
+                <h1 id="name1">Name 1</h1>
+            </div>
+            <div class="col-sm-6 row2_col">
+                <h1 id="name2">Name 2</h1>
+            </div>
+        </div>
+        <div class="row row3">
+            <div class="col-sm-6 row3_col">
+                <h1 class="stat_bar_text">Health:</h1>
+                <div class="stat_bar" id="health1" style="background-color: rgb(216, 105, 105)"></div>
+            </div>
+            <div class="col-sm-6 row3_col">
+                <h1 class="stat_bar_text">Health:</h1>
+                <div class="stat_bar" id="health2" style="background-color: rgb(175, 64, 64)"></div>
+            </div>
+        </div>
+        <div class="row row4">
+            <div class="col-sm-6 row4_col">
+                <h1 class="stat_bar_text">Strength:</h1>
+                <div class="stat_bar" id="strength1" style="background-color: rgb(101, 164, 212)"></div>
+            </div>
+            <div class="col-sm-6 row4_col">
+                <h1 class="stat_bar_text">Strength:</h1>
+                <div class="stat_bar" id="strength2" style="background-color: rgb(60, 120, 167)"></div>
+            </div>
+        </div>
+        <div class="row row5">
+            <div class="col-sm-6 row5_col">
+                <h1 class="stat_bar_text">Quickness:</h1>
+                <div class="stat_bar" id="quickness1" style="background-color: rgb(185, 104, 212)"></div>
+            </div>
+            <div class="col-sm-6 row5_col">
+                <h1 class="stat_bar_text">Quickness:</h1>
+                <div class="stat_bar" id="quickness2" style="background-color: rgb(147, 66, 173)"></div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="fight_game.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+row {
+ 
+}
+
+.row1 {
+    margin-top: 50px;
+    height: 100px;
+}
+
+.row1_col {
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    height: 100px;
+}
+
+.row1_btn {
+    height: 100%;
+    width: 50%;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    font-size: 3em!important;
+}
+
+.row2 {
+    margin-top: 100px;
+}
+
+.row2_col {
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    height: 50px;
+}
+
+.row3 {
+    margin-top: 30px;
+    height: 100%;
+}
+
+.row3_col {  
+    height: 50px;
+}
+
+.row4 {
+    margin-top: 60px;
+    height: 100%;
+}
+
+.row4_col {  
+    height: 50px;
+}
+
+.row5 {
+    margin-top: 60px;
+    height: 100%;
+}
+
+.row5_col {  
+    height: 50px;
+}
+
+.stat_bar {
+    height: 100%;
+    width: 100%;
+}
+
+.stat_bar_text {
+}
