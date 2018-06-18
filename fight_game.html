@@ -14,10 +14,10 @@
     <div class="container">
         <div class="row row1">
             <div class="col-sm-6 row1_col">
-                <button type="button" class="btn row1_btn" onclick="GenerateP1();">Generate</button>
+                <button type="button" class="btn row1_btn" onclick="generateP1();">Generate</button>
             </div>
             <div class="col-sm-6 row1_col">
-                <button type="button" class="btn row1_btn" onclick="Generate(player2);">Generate</button>
+                <button type="button" class="btn row1_btn" onclick="generateP2();">Generate</button>
             </div>
         </div>
         <div class="row row2">
@@ -56,6 +56,14 @@
             <div class="col-sm-6 row5_col">
                 <h1 class="stat_bar_text">Quickness:</h1>
                 <div class="stat_bar" id="quickness2" style="background-color: rgb(147, 66, 173)"></div>
+            </div>
+        </div>
+        <div class="row row6">
+            <div class="col-sm-6 row6_col">
+                <button type="button" class="btn row6_btn" onclick="fight();" style="background-color: peru">Fight</button>
+            </div>
+            <div class="col-sm-6 row6_col">
+                <button type="button" class="btn row6_btn" onclick="idle();" style="background-color: rgb(116, 116, 116)">Idle</button>
             </div>
         </div>
     </div>
