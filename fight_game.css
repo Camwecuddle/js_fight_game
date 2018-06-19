@@ -43,7 +43,7 @@ row {
 }
 
 .row4 {
-    margin-top: 60px;
+    margin-top: 50px;
     height: 100%;
 }
 
@@ -52,7 +52,7 @@ row {
 }
 
 .row5 {
-    margin-top: 60px;
+    margin-top: 25px;
     height: 100%;
 }
 
@@ -61,18 +61,45 @@ row {
 }
 
 .row6 {
-    margin-top: 150px;
+    margin-top: 25px;
+    height: 100%;
+}
+
+.row6_col {  
+    height: 50px;
+}
+
+.row7 {
+    margin-top: 25px;
+    height: 100%;
+}
+
+.row7_col {  
+    height: 50px;
+}
+
+.row8 {
+    margin-top: 25px;
+    height: 100%;
+}
+
+.row8_col {  
+    height: 50px;
+}
+
+.row9 {
+    margin-top: 100px;
     height: 100px;
 }
 
-.row6_col {
+.row9_col {
     display: flex;
     align-items: center;
     justify-content: center;   
     height: 100px;
 }
 
-.row6_btn {
+.row9_btn {
     height: 100%;
     width: 50%;
     background-color: rgb(50, 50, 50);
@@ -80,11 +107,39 @@ row {
     font-size: 3em!important;
 }
 
-.stat_bar {
+.row10 {
+    margin-top: 20px;
+    margin-bottom: 100px;
+    height: 100px;
+}
+
+.row10_col {
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    height: 100px;
+}
+
+.row10_btn {
+    height: 100%;
+    width: 50%;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    font-size: 3em!important;
+}
+
+.stat_bar_tall {
     height: 100%;
     width: 100%;
     min-width: 0%;
 }
 
+.stat_bar_short {
+    height: 50%;
+    width: 100%;
+    min-width: 0%;
+}
+
 .stat_bar_text {
+    font-size: 2em;
 }

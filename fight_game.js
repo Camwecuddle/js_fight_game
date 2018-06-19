@@ -1,11 +1,14 @@
 var idling = false;
 
 class Fighter {
-    constructor(name, health, strength, quickness) {
+    constructor(name, health, strength, quickness, vamp, luck, crit) {
         this.name = name;
         this.health = health;
         this.strength = strength;
         this.quickness = quickness;
+        this.vamp = vamp; //What percent of health they steal
+        this.luck = luck; //How often vamp and crit take effect
+        this.crit = crit; //Damage multiplyer 
         this.startHealth = health;
         this.startStrength = strength;
         this.startQuickness = quickness;
