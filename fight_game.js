@@ -1,17 +1,15 @@
 var idling = false;
 
 class Fighter {
-    constructor(name, health, strength, quickness, vamp, luck, crit) {
+    constructor(name, health, strength, quickness, luck, vamp, crit) {
         this.name = name;
-        this.health = health;
-        this.strength = strength;
-        this.quickness = quickness;
-        this.vamp = vamp; //What percent of health they steal
+        this.health = health; 
+        this.strength = strength; //Damage per turn
+        this.quickness = quickness; //Decides first attack
         this.luck = luck; //How often vamp and crit take effect
+        this.vamp = vamp; //What percent of health they steal
         this.crit = crit; //Damage multiplyer 
         this.startHealth = health;
-        this.startStrength = strength;
-        this.startQuickness = quickness;
     }
 }
 
@@ -31,6 +29,15 @@ function terminate(fighter) {
         $("#quickness1").animate({
             width: "0%"
         });
+        $("#luck1").animate({
+            width: "0%"
+        });
+        $("#vamp1").animate({
+            width: "0%"
+        });
+        $("#crit1").animate({
+            width: "0%"
+        });
     } else {
         $("#name2").html("");
         $("#health2").animate({
@@ -42,13 +49,22 @@ function terminate(fighter) {
         $("#quickness2").animate({
             width: "0%"
         });
+        $("#luck2").animate({
+            width: "0%"
+        });
+        $("#vamp2").animate({
+            width: "0%"
+        });
+        $("#crit2").animate({
+            width: "0%"
+        });
     }
 }
 
 var player1 = null;
 var player2 = null;
 
-function generateP1() {
+function generateP1() { //create a new fighter in the player1 position
     console.log(player1 == null);
     if (player1 == null) {
         var name = randomName();
@@ -59,8 +75,14 @@ function generateP1() {
         console.log("Strength: " + strength);
         var quickness = randomStat((health + strength) / 2);
         console.log("Quickness: " + quickness);
+        var luck = randomStat((health + strength) / 2);
+        console.log("Luck: " + luck);
+        var vamp = randomStat((health + strength) / 2);
+        console.log("Vamp: " + vamp);
+        var crit = randomStat((health + strength) / 2);
+        console.log("Crit: " + crit);
 
-        player1 = new Fighter(name, health, strength, quickness);
+        player1 = new Fighter(name, health, strength, quickness, luck, vamp, crit);
     }
     displayP1();
 }
@@ -76,6 +98,16 @@ function displayP1() {
     $("#quickness1").animate({
         width: player1.quickness + "%"
     });
+    $("#luck1").animate({
+        width: player1.luck + "%"
+    });
+    $("#vamp1").animate({
+        width: player1.vamp + "%"
+    });
+    $("#crit1").animate({
+        width: player1.crit + "%"
+    });
+
 }
 
 function generateP2() {
@@ -89,8 +121,14 @@ function generateP2() {
         console.log("Strength: " + strength);
         var quickness = randomStat((health + strength) / 2);
         console.log("Quickness: " + quickness);
+        var luck = randomStat((health + strength) / 2);
+        console.log("Luck: " + luck);
+        var vamp = randomStat((health + strength) / 2);
+        console.log("Vamp: " + vamp);
+        var crit = randomStat((health + strength) / 2);
+        console.log("Crit: " + crit);
 
-        player2 = new Fighter(name, health, strength, quickness);
+        player2 = new Fighter(name, health, strength, quickness, luck, vamp, crit);
     }
     displayP2();
 }
@@ -105,6 +143,15 @@ function displayP2() {
     });
     $("#quickness2").animate({
         width: player2.quickness + "%"
+    });
+    $("#luck2").animate({
+        width: player2.luck + "%"
+    });
+    $("#vamp2").animate({
+        width: player2.vamp + "%"
+    });
+    $("#crit2").animate({
+        width: player2.crit + "%"
     });
 }
 
@@ -135,37 +182,87 @@ function turn(p1, p2) { //one turn of the fight
     while (true) {
 
         if (p1.quickness > p2.quickness) {
-            p2.health -= (p1.strength / 10); //player one attack
+            var willCrit = p1.luck > Math.floor(Math.random() * 100);
+            var willVamp = p1.luck > Math.floor(Math.random() * 100);
+            
+            if(willCrit) p2.health -= (p1.strength / 5); //player one crit attack
+            else p2.health -= (p1.strength / 10); //player one attack
+
+            if(willVamp) p1.health += (p1.vamp / 5); //player one life steal
+            else {}
+            
             $("#health2").animate({
                 width: p2.health + "%"
             });
-            if (p2.health <= 0) {
-                setTimeout(endFight, 10000, p1);
-                return;
-            }
-            p1.health -= (p2.strength / 10); //player two attack
             $("#health1").animate({
                 width: p1.health + "%"
             });
+
+            if (p2.health <= 0) {
+                setTimeout(endFight, 15000, p1);
+                return;
+            }
+            
+            var willCrit = p2.luck > Math.floor(Math.random() * 100);
+            var willVamp = p2.luck > Math.floor(Math.random() * 100);
+            
+            if(willCrit) p1.health -= (p2.strength / 5); //player one crit attack
+            else p1.health -= (p2.strength / 10); //player one attack
+
+            if(willVamp) p2.health += (p2.vamp / 5); //player one life steal
+            else {}
+
+            $("#health1").animate({
+                width: p1.health + "%"
+            });
+            $("#health2").animate({
+                width: p2.health + "%"
+            });
+
             if (p1.health <= 0) {
-                setTimeout(endFight, 10000, p2);
+                setTimeout(endFight, 15000, p2);
                 return;
             }
         } else {
-            p1.health -= (p2.strength / 10); //player one attack
+            var willCrit = p2.luck > Math.floor(Math.random() * 100);
+            var willVamp = p2.luck > Math.floor(Math.random() * 100);
+            
+            if(willCrit) p1.health -= (p2.strength / 5); //player one crit attack
+            else p1.health -= (p2.strength / 10); //player one attack
+
+            if(willVamp) p2.health += (p2.vamp / 5); //player one life steal
+            else {}
+
             $("#health1").animate({
                 width: p1.health + "%"
             });
-            if (p1.health <= 0) {
-                setTimeout(endFight, 10000, p2);
-                return;
-            }
-            p2.health -= (p1.strength / 10); //player two attack
             $("#health2").animate({
                 width: p2.health + "%"
             });
+
+            if (p1.health <= 0) {
+                setTimeout(endFight, 15000, p2);
+                return;
+            }
+            
+            willCrit = p1.luck > Math.floor(Math.random() * 100);
+            willVamp = p1.luck > Math.floor(Math.random() * 100);
+            
+            if(willCrit) p2.health -= (p1.strength / 5); //player one crit attack
+            else p2.health -= (p1.strength / 10); //player one attack
+
+            if(willVamp) p1.health += (p1.vamp / 5); //player one life steal
+            else {}
+
+            $("#health2").animate({
+                width: p2.health + "%"
+            });
+            $("#health1").animate({
+                width: p1.health + "%"
+            });
+
             if (p2.health <= 0) {
-                setTimeout(endFight, 10000, p1);
+                setTimeout(endFight, 15000, p1);
                 return;
             }
         }
