@@ -8,7 +8,8 @@ class Fighter {
         this.quickness = quickness; //Decides first attack
         this.luck = luck; //How often vamp and crit take effect
         this.vamp = vamp; //What percent of health they steal
-        this.crit = crit; //Damage multiplyer 
+        this.crit = crit; //Damage multiplyer
+        this.level = 0; 
         this.startHealth = health;
     }
 }
@@ -75,7 +76,7 @@ function generateP1() { //create a new fighter in the player1 position
         console.log("Strength: " + strength);
         var quickness = randomStat((health + strength) / 2);
         console.log("Quickness: " + quickness);
-        var luck = randomStat((health + strength) / 2);
+        var luck = randomStat((health + strength) / 2)/2;
         console.log("Luck: " + luck);
         var vamp = randomStat((health + strength) / 2);
         console.log("Vamp: " + vamp);
@@ -88,7 +89,7 @@ function generateP1() { //create a new fighter in the player1 position
 }
 
 function displayP1() {
-    $("#name1").html(player1.name);
+    $("#name1").html(player1.name + " lvl." + player1.level);
     $("#health1").animate({
         width: player1.health + "%"
     });
@@ -121,7 +122,7 @@ function generateP2() {
         console.log("Strength: " + strength);
         var quickness = randomStat((health + strength) / 2);
         console.log("Quickness: " + quickness);
-        var luck = randomStat((health + strength) / 2);
+        var luck = randomStat((health + strength) / 4);
         console.log("Luck: " + luck);
         var vamp = randomStat((health + strength) / 2);
         console.log("Vamp: " + vamp);
@@ -134,7 +135,7 @@ function generateP2() {
 }
 
 function displayP2() {
-    $("#name2").html(player2.name);
+    $("#name2").html(player2.name + " lvl." + player2.level);
     $("#health2").animate({
         width: player2.health + "%"
     });
@@ -274,11 +275,13 @@ function endFight(winner) {
     if (winner === player1) {
         player2 = null;
         reset(winner);
+        winner.level++;
         displayP1();
         terminate(player2);
     } else {
         player1 = null;
         reset(winner);
+        winner.level++;
         displayP2();
         terminate(player1);
     }
