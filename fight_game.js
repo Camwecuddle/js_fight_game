@@ -72,7 +72,7 @@ function generateP1() { //create a new fighter in the player1 position
         console.log(name);
         var health = randomStat(1);
         console.log("Health: " + health);
-        var strength = randomStat(health / 2);
+        var strength = randomStat(health / 2)+1; //strength has to be greater than 0
         console.log("Strength: " + strength);
         var quickness = randomStat((health + strength) / 2);
         console.log("Quickness: " + quickness);
@@ -118,11 +118,11 @@ function generateP2() {
         console.log(name);
         var health = randomStat(1);
         console.log("Health: " + health);
-        var strength = randomStat(health / 2);
+        var strength = randomStat(health / 2)+1; //strength has to be greater than 0
         console.log("Strength: " + strength);
         var quickness = randomStat((health + strength) / 2);
         console.log("Quickness: " + quickness);
-        var luck = randomStat((health + strength) / 4);
+        var luck = randomStat((health + strength) / 2)/2;
         console.log("Luck: " + luck);
         var vamp = randomStat((health + strength) / 2);
         console.log("Vamp: " + vamp);
@@ -288,6 +288,26 @@ function endFight(winner) {
     if (idling) idle();
 }
 
+function updateScoreboard() {
+    console.log("yes");
+    var sw = new TextWriter("DriveDirs.txt");
+    sw.write("YOUYOYOYYO");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Functions to generate a random fighter name 
+*/
 function randomName() {
     var name = capFirst(randomEl(adjectives)) + ' ' + capFirst(randomEl(nouns));
     return name;
